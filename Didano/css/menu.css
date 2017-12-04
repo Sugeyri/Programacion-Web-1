@@ -1,0 +1,25 @@
+
+
+h2{
+    font-weight: bold;
+}
+.navbar {
+    background: #35D1BC;
+    border: 2px solid #35D1BC;
+    position: fixed;
+    width: 100%;
+    margin-bottom: 100px;
+}
+
+.navbar-header button {
+    background: #35D1BC;
+    border: 1px solid #35D1BC;
+}
+
+.navbar-collapse {
+    float: right
+}
+
+.navbar-collapse ul li:hover {
+    background: #68F3DE;
+}
