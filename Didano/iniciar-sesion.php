@@ -15,17 +15,17 @@
   <div class="container">
     <div class="row">
       <br><br><br><br><br><br><br><br>
-      <form action="" name="frmLogin">
+      <form action="checklogin.php" method= "post" name="frmLogin">
         <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-          <input type="text" class="form-control" id="user" placeholder="Usuario">
+          <input type="text" class="form-control" name="user" placeholder="Usuario">
         </div><br>
         <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-          <input id="pass" type="password" class="form-control" placeholder="Contraseña">
+          <input name="pass" type="password" class="form-control" placeholder="Contraseña">
         </div><br><br>
         <div>
-          <input type="button" class="btn btn-success btn-block" value="Ingresar" id="ingresar">
+          <input type="submit" class="btn btn-success btn-block" value="Ingresar" id="ingresar">
           <input type="button" class="btn btn-default btn-block" value="Seguir como invitado" id="invitado">
         </div>
       </form>
@@ -33,8 +33,6 @@
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
-  <script src="js/login.js"></script>
-</body>
 <br><br>
 
 </html>
