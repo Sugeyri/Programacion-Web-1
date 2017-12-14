@@ -25,16 +25,14 @@
                     </button>
                     <a href="#" class="navbar-brand"> Didano</a>
                 </div>
-                <!--inicia menu-->
                 <div class="collapse navbar-collapse" id="navegacion-fm">
                     <ul class="nav navbar-nav">
-                        <li><a href="pedidos.html">Pedidos</a></li>
-                        <li><a href="rutas.html">Rutas</a></li>
-                                <li><a href="agregar-producto.html">Agregar Producto</a></li>
-                                <li><a href="agregar-cliente.html">Agregar Cliente</a></li>
-                                <li><a href="agregar-empleado.html">Agregar Empleado</a></li>
-                         
-                        <li><a href="Inicio.html">Cerrar Sesion</a></li>
+                        <li><a href="pedidos.php">Pedidos</a></li>
+                        <li><a href="crear-usuario.php">Agregar Usuario</a></li>
+                        <li><a href="agregar-producto.php">Agregar Producto</a></li>
+                        <li><a href="agregar-cliente.php">Agregar Cliente</a></li>
+                        <li><a href="agregar-empleado.php">Agregar Empleado</a></li>
+                        <li><a href="logout.php">Cerrar Sesion</a></li>
                     </ul>
                 </div>
             </div>
