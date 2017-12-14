@@ -7,12 +7,39 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="img/logo.ico">
     <link rel="stylesheet" href="css/style-b.css">
-    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/menu.css">
     <title>Agregar Usuario</title>
 </head>
 
 <body>
+<header>
+        <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="buttom" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navegacion-fm">
+                                <span class="sr-only">Desplegar / Ocultar Menu</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                </button>
+                    <a href="#" class="navbar-brand"> Didano</a>
+                </div>
+                <!--inicia menu-->
+                <div class="collapse navbar-collapse" id="navegacion-fm">
+                    <ul class="nav navbar-nav">
+                        <li><a href="pedidos.php">Pedidos</a></li>
+                        <li><a href="agregar-producto.php">Agregar Producto</a></li>
+                        <li><a href="agregar-cliente.php">Agregar Cliente</a></li>
+                        <li><a href="agregar-empleado.php">Agregar Empleado</a></li>
+
+                        <li><a href="Inicio.php">Cerrar Sesion</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <br><br>
     <div class="container container-ph">
         <div class="page-header">
             <h2>Agregar Usuario</h2>

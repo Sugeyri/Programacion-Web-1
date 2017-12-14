@@ -27,12 +27,12 @@
                         <!--inicia menu-->
                         <div class="collapse navbar-collapse" id="navegacion-fm">
                             <ul class="nav navbar-nav">
-                                <li><a href="pedidos.html">Pedidos</a></li>
-                                <li><a href="agregar-producto.html">Agregar Producto</a></li>
-                                <li><a href="agregar-cliente.html">Agregar Cliente</a></li>
-                                <li><a href="agregar-empleado.html">Agregar Empleado</a></li>
+                                <li><a href="pedidos.php">Pedidos</a></li>
+                                <li><a href="agregar-producto.php">Agregar Producto</a></li>
+                                <li><a href="agregar-cliente.php">Agregar Cliente</a></li>
+                                <li><a href="agregar-empleado.php">Agregar Empleado</a></li>
         
-                                <li><a href="Inicio.html">Cerrar Sesion</a></li>
+                                <li><a href="Inicio.php">Cerrar Sesion</a></li>
                             </ul>
                         </div>
                     </div>
@@ -184,7 +184,7 @@
                                             </tr>
                                         </table>
                                         <br><br><br>
-                                        <a href="totales.html" class="btn btn-md btn-info" data-toggle="modal" target="blank">Totales a Entregar</a>
+                                        <a href="totales.php" class="btn btn-md btn-info" data-toggle="modal" target="blank">Totales a Entregar</a>
                                         <br><br>
                                     </div>
                                 </div>
