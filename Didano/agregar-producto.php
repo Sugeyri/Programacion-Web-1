@@ -12,6 +12,40 @@
     <title>Agregar Producto</title>
 </head>
 
+<?php
+
+$host_db = "localhost";
+$user_db = "root";
+$pass_db = "";
+$db_name = "didano";
+$tbl_name = "producto";
+
+$conexion = new mysqli($host_db, $user_db, $pass_db, $db_name);
+
+if ($conexion->connect_error) {
+ die("La conexion falló: " . $conexion->connect_error);
+}
+
+if(isset($_POST['agregar'])){
+    $codigo = $_POST['codigo'];
+    $nombre = $_POST['nombre'];
+    $fam = $_POST['fam'];
+    $unidad = $_POST['und'];
+    $precio = $_POST['precio'];
+
+        $insert = "INSERT INTO producto(codigo, nombre, familia, unidad, precio) 
+        VALUES  ('$codigo','$nombre','$fam','$unidad','$precio')";
+        
+        $ejecutar = mysqli_query($conexion, $insert);
+
+             if($ejecutar){print '<script language="JavaScript">'; 
+                print 'alert("Registrado con éxito");'; 
+                print '</script>'; 
+            }       
+    }
+ 
+
+ ?>
 <body>
         <header>
                 <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
@@ -23,18 +57,17 @@
                                         <span class="icon-bar"></span>
                                         <span class="icon-bar"></span>
                                         </button>
-                            <a href="#" class="navbar-brand"> Didano</a>
+                            <a href="menu-principal.php" class="navbar-brand"> Didano</a>
                         </div>
                         <!--inicia menu-->
                         <div class="collapse navbar-collapse" id="navegacion-fm">
-                            <ul class="nav navbar-nav">
-                                <li><a href="pedidos.php">Pedidos</a></li>
-                                <li><a href="agregar-producto.php">Agregar Producto</a></li>
-                                <li><a href="agregar-cliente.php">Agregar Cliente</a></li>
-                                <li><a href="agregar-empleado.php">Agregar Empleado</a></li>
-        
-                                <li><a href="Inicio.php">Cerrar Sesion</a></li>
-                            </ul>
+                        <ul class="nav navbar-nav">
+                        <li><a href="pedidos.php">Pedidos</a></li>
+                        <li><a href="crear-usuario.php">Agregar Usuario</a></li>
+                        <li><a href="agregar-producto.php">Agregar Producto</a></li>
+                        <li><a href="agregar-cliente.php">Agregar Cliente</a></li>
+                        <li><a href="logout.php">Cerrar Sesion</a></li>
+                    </ul>
                         </div>
                     </div>
                 </nav>
@@ -46,18 +79,18 @@
         </div>
     </div>
     <div class="container container-prod">
-        <form action="" class="">
+        <form method="POST" class="">
             <div class="form-group">
                 <label for="codigo">Código:<p>*</p></label>
-                <input class="form-control" id="codigo" type="text" placeholder="Código de producto" title="Favor rellenar este campo!" required>
+                <input class="form-control" name="codigo" type="text" placeholder="Código de producto" title="Favor rellenar este campo!" required>
             </div>
             <div class="form-group">
                 <label for="nombre">Nombre: <p>*</p></label>
-                <input class="form-control" id="nombre" type="text" placeholder="Nombre" title="Favor rellenar este campo!" required>
+                <input class="form-control" name="nombre" type="text" placeholder="Nombre" title="Favor rellenar este campo!" required>
             </div>
             <div class="form-group">
                 <label for="familia">Familia: <p>*</p></label><br>
-				<div id="familia">
+				<div name="familia">
                     <input type="radio" name="fam" id="Frutas" value="Frutas" required>Frutas
                     <br>
                     <input type="radio" name="fam" id="Hortalizas" value="Hortalizas" required>Hortalizas
@@ -65,7 +98,7 @@
 			</div>
             <div class="form-group">
                 <label for="unidad">Unidad: <p>*</p></label><br>
-				<div id="Unidad">
+				<div name="Unidad">
                     <input type="radio" name="und" id="unidad" value="Unidad" required>Unidad
                     <br>
                     <input type="radio" name="und" id="kilo" value="Kilogramos" required>Kilogramos
@@ -73,30 +106,86 @@
 			</div>
             <div class="form-group">
                 <label for="precio">Precio: <p>*</p></label>
-                <input class="form-control" id="precio" type="text" placeholder="Precio" title="Favor rellenar este campo!" required>
+                <input class="form-control" name="precio" type="text" placeholder="Precio" title="Favor rellenar este campo!" required>
             </div>
             <div class="container container-v1">
-                <input type="submit" id="agregar" value="Agregar" class="btn btn-lg btn-success"></input>
-                <input type="button" id="editar" value="Editar" class="btn btn-lg btn-default"></input>
-                <input type="submit" id="eliminar" value="Eliminar" class="btn btn-lg btn-danger"></input>
+                <input type="submit" name="agregar" value="Agregar" class="btn btn-lg btn-success"></input>
             </div>
         </form>
     </div>
     <br>
+
+    
+
+    <div class="modal" id="editUsu" tabindex="-1" role="dialog" aria-labellebdy="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4>Editar Producto</h4>
+                    </div>
+                    <div class="modal-body">                      
+                       <form action="actualiza-producto.php" method="POST">                       		
+                       		        
+                       		        <input  id="id" name="id" type="hidden" ></input>   		
+                                       <div class="form-group">
+                                       <label for="">Código: <p>*</p></label>
+                                       <input class="form-control" name="codigo" id="codigo" type="text" placeholder="Código" title="Favor rellenar este campo!" required>
+                                   </div>
+                                   <div class="form-group">
+                                   <label for="">Nombre</label>
+                                   <input class="form-control" name="nombre" id="nombre" type="text" placeholder="Nombre" title="Favor rellenar este campo!" required>
+                                   </div>
+                                   <div class="form-group">
+                                       <label for="">Familia: <p>*</p></label>
+                                       <input class="form-control" name="familia" id="familia" type="password" placeholder="Familia" title="Favor rellenar este campo!" required>
+                                   </div>
+                                   <div class="form-group">
+                                       <label for="">Unidad: <p>*</p></label>
+                                       <input class="form-control" name="unidad" id="unidad" type="password" placeholder="Unidad" title="Favor rellenar este campo!" required>
+                                   </div>
+                                   <div class="form-group">
+                                       <label for="">Precio: <p>*</p></label>
+                                       <input class="form-control" name="precio" id="preoio" type="password" placeholder="Precio" title="Favor rellenar este campo!" required>
+                                   </div>
+
+									<input type="submit" value="Editar" name="editar" class="btn btn-success">							
+                       </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div> 
     <div class="container container-tabla">
         <div class="table-responsive">
-            <table class="table text-center ">
-                <thead>
-                     <th class="text-center">Código</th>
-                     <th class="text-center">Nombre</th>
-                     <th class="text-center">Familia</th>
-                     <th class="text-center">Unidad</th>
-                     <th class="text-center">Precio</th>
-                 </thead>
-                <tbody id="productos-tabla">
-
-                </tbody>
-            </table>
+         
+ <table class='table'>
+ <tr>
+     <th>Código</th><th>Nombre</th><th>Familia</th><th>Unidad</th><th>Precio</th><th><span class="glyphicon glyphicon-wrench"></span></th>
+ </tr>			
+<?php
+ //cargar tabla
+$consulta= "SELECT * FROM producto";
+if ($resultado =  mysqli_query($conexion, $consulta)) 
+{
+ while ($fila = $resultado->fetch_row()) 
+ {					
+     echo "<tr>";
+     echo "<td>$fila[1]</td><td>$fila[2]</td><td>$fila[3]</td><td>$fila[4]</td><td>$fila[5]</td>";	
+     echo"<td>";						
+     echo "<a data-toggle='modal' data-target='#editProducto' data-id='" .$fila[0] .
+     "' data-cod='" .$fila[1] ."' data-nombre='" .$fila[2] ."' data-fam='" .$fila[3] ."' data-und='" .$fila[4] .
+     "' data-precio='" .$fila[5] ."' class='btn btn-warning'><span class='glyphicon glyphicon-pencil'></span></a> ";			
+     echo "<a class='btn btn-danger'href='elimina-producto.php?codigo=" .$fila[1] ."'><span class='glyphicon glyphicon-remove'></span></a>";		
+     echo "</td>";
+     echo "</tr>";
+ }
+ $resultado->close();
+}		
+?>
+</table>
         </div>
     </div>
 
@@ -108,6 +197,27 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/agregar-producto.js"></script>
+    <script>			 
+		  $('#editProducto').on('show.bs.modal', function (event) {
+		  var button = $(event.relatedTarget) 
+		  var recipient0 = button.data('id')
+		  var recipient1 = button.data('cod')
+		  var recipient2 = button.data('nombre')
+          var recipient3 = button.data('fam')
+          var recipient4 = button.data('und')
+          var recipient5 = button.data('precio')
+          
+
+		  var modal = $(this)		 
+		  modal.find('.modal-body #id').val(recipient0)
+		  modal.find('.modal-body #codigo').val(recipient1)
+		  modal.find('.modal-body #nombre').val(recipient2)
+          modal.find('.modal-body #familia').val(recipient3)
+          modal.find('.modal-body #unidad').val(recipient4)
+		  modal.find('.modal-body #precio').val(recipient5)			 
+		});
+		
+	</script>
 </body>
 <br><br>
 

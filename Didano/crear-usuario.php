@@ -61,7 +61,7 @@ if(isset($_POST['guardar'])){
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             </button>
-            <a href="#" class="navbar-brand"> Didano</a>
+            <a href="menu-principal.php" class="navbar-brand"> Didano</a>
         </div>
         <div class="collapse navbar-collapse" id="navegacion-fm">
             <ul class="nav navbar-nav">
@@ -69,7 +69,6 @@ if(isset($_POST['guardar'])){
                 <li><a href="crear-usuario.php">Agregar Usuario</a></li>
                 <li><a href="agregar-producto.php">Agregar Producto</a></li>
                 <li><a href="agregar-cliente.php">Agregar Cliente</a></li>
-                <li><a href="agregar-empleado.php">Agregar Empleado</a></li>
                 <li><a href="logout.php">Cerrar Sesion</a></li>
             </ul>
         </div>
@@ -122,7 +121,7 @@ if(isset($_POST['guardar'])){
                         <h4>Editar Usuario</h4>
                     </div>
                     <div class="modal-body">                      
-                       <form action="" method="POST">                       		
+                       <form action="actualiza-usuario.php" method="POST">                       		
                        		        
                        		        <input  id="id" name="id" type="hidden" ></input>   		
                                        <div class="form-group">
@@ -184,26 +183,7 @@ if ($resultado =  mysqli_query($conexion, $consulta))
 </table>
 
 <?php
-//edita
-if(isset($_POST['editar'])){
-$id = $fila[0];
-$usuario = $_POST['usuario'];
-$tipousuario =  $_POST['tipousuario'];
 
-if ($_POST['clave'] == $_POST['nclave']){
-    $pass = $_POST['clave'];
-
-        $sql = ("update usuario set usuario='$usuario', tipousuario=$tipousuario, pass='$pass' where id=$id");
-        $editar = mysqli_query($conexion, $sql);
-
-        if($editar){print '<script language="JavaScript">'; 
-            print 'alert("Registro actualizado");'; 
-            print '</script>'; 
-        }       
-    } else{
-    echo '<script language="javascript">alert("Contraseñas no coinciden.");</script>';
-    }
-}
  mysqli_close($conexion); 
 ?>
     </div>

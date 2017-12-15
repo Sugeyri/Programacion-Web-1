@@ -27,14 +27,15 @@
                 </div>
                 <!--inicia menu-->
                 <div class="collapse navbar-collapse" id="navegacion-fm">
-                    <ul class="nav navbar-nav">
-                        <li><a href="pedidos.html">Pedidos</a></li>
-                        <li><a href="agregar-producto.php">Agregar Producto</a></li>
-                        <li><a href="agregar-cliente.php">Agregar Cliente</a></li>
-                        <li><a href="agregar-empleado.php">Agregar Empleado</a></li>
-
-                        <li><a href="Inicio.php">Cerrar Sesion</a></li>
-                    </ul>
+                <ul class="nav navbar-nav">
+                <li><a href="menu-principal.php">Inicio</a></li>
+                <li><a href="pedidos.php">Pedidos</a></li>
+                <li><a href="crear-usuario.php">Agregar Usuario</a></li>
+                <li><a href="agregar-producto.php">Agregar Producto</a></li>
+                <li><a href="agregar-cliente.php">Agregar Cliente</a></li>
+                <li><a href="agregar-empleado.php">Agregar Empleado</a></li>
+                <li><a href="logout.php">Cerrar Sesion</a></li>
+            </ul>
                 </div>
             </div>
         </nav>
