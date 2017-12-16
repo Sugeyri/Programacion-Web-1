@@ -18,5 +18,5 @@ session_start();
                 print '</script>'; 
           
 	echo "<script> window.open('agregar-producto.php','_self')</script>";
-    }
+    
 	

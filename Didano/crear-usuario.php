@@ -92,9 +92,8 @@ if(isset($_POST['guardar'])){
             <label for="tipousuario">Tipo de Usuario</label>
             <select class="form-control" name="tipousuario" id="tipousuario">
             <option value="" selected disabled>Seleccione una opcion</option>
-              <option value="admin">Administrador</option>
-              <option value="empleado">Empleado</option>
-              <option value="cliente">Cliente</option>
+              <option value="Administador">Administrador</option>
+              <option value="Empleado">Empleado</option>
             </select>
           </div>
             <div class="form-group">
@@ -134,7 +133,6 @@ if(isset($_POST['guardar'])){
                                    <option value="" selected disabled>Seleccione una opcion</option>
                                      <option value="admin">Administrador</option>
                                      <option value="empleado">Empleado</option>
-                                     <option value="cliente">Cliente</option>
                                    </select>
                                  </div>
                                    <div class="form-group">
@@ -156,8 +154,6 @@ if(isset($_POST['guardar'])){
             </div>
         </div> 
       
-
-
  <table class='table'>
  <tr>
      <th>Usuario</th><th>Tipo Usuario</th><th><span class="glyphicon glyphicon-wrench"></span></th>
@@ -176,6 +172,7 @@ if ($resultado =  mysqli_query($conexion, $consulta))
      echo "<a class='btn btn-danger'href='elimina-usuario.php?usuario=" .$fila[1] ."'><span class='glyphicon glyphicon-remove'></span></a>";		
      echo "</td>";
      echo "</tr>";
+     
  }
  $resultado->close();
 }		
@@ -189,8 +186,6 @@ if ($resultado =  mysqli_query($conexion, $consulta))
     </div>
     <br>
 
-    </form>
-    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script>			 

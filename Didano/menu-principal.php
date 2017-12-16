@@ -23,11 +23,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     </button>
-                    <a href="#" class="navbar-brand"> Didano</a>
+                    <a href="menu-principal.php" class="navbar-brand"> Didano</a>
                 </div>
                 <div class="collapse navbar-collapse" id="navegacion-fm">
                     <ul class="nav navbar-nav">
-                        <li><a href="pedidos.php">Pedidos</a></li>
+                        <li><a href="pedidos.php">Ver Pedidos</a></li>
                         <li><a href="crear-usuario.php">Agregar Usuario</a></li>
                         <li><a href="agregar-producto.php">Agregar Producto</a></li>
                         <li><a href="agregar-cliente.php">Agregar Cliente</a></li>

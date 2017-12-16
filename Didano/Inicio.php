@@ -7,34 +7,33 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/estilos-menu.css">
+    <link rel="stylesheet" href="css/menu.css">
     <title>Didano</title>
     <link rel="icon" href="img/logo.ico">
 </head>
 
 <body>
-    <header>
-        <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="buttom" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navegacion-fm">
-                    <span class="sr-only">Desplegar / Ocultar Menu</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    </button>
-                    <a href="#" class="navbar-brand"> Didano</a>
-                </div>
-                <!--inicia menu-->
-                <div class="collapse navbar-collapse" id="navegacion-fm">
-                    <ul class="nav navbar-nav">
-                        <li><a href="#">Inicio</a></li>
-                        <li><a href="pedido.html" target="blank">Realizar Pedidos</a></li>
-                        <li><a href="iniciar-sesion.html">Iniciar Sesion</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
+<header>
+<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="buttom" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navegacion-fm">
+            <span class="sr-only">Desplegar / Ocultar Menu</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a href="menu-principal.php" class="navbar-brand"> Didano</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navegacion-fm">
+            <ul class="nav navbar-nav">
+                <li><a href="pedido.php">Realizar Pedido</a></li>
+                <li><a href="logout.php">Iniciar Sesion</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+</header>
     <br><br><br><br>
 
 

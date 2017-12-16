@@ -62,7 +62,8 @@ if(isset($_POST['agregar'])){
                         <!--inicia menu-->
                         <div class="collapse navbar-collapse" id="navegacion-fm">
                         <ul class="nav navbar-nav">
-                        <li><a href="pedidos.php">Pedidos</a></li>
+                        <li><a href="pedidos.php">Pedidos</a>
+                            <li><a href="crear-usuario.php">Agregar Usuario</a></li></li>
                         <li><a href="crear-usuario.php">Agregar Usuario</a></li>
                         <li><a href="agregar-producto.php">Agregar Producto</a></li>
                         <li><a href="agregar-cliente.php">Agregar Cliente</a></li>
@@ -112,12 +113,8 @@ if(isset($_POST['agregar'])){
                 <input type="submit" name="agregar" value="Agregar" class="btn btn-lg btn-success"></input>
             </div>
         </form>
-    </div>
-    <br>
 
-    
-
-    <div class="modal" id="editUsu" tabindex="-1" role="dialog" aria-labellebdy="myModalLabel" aria-hidden="true">
+    <div class="modal" id="editProducto" tabindex="-1" role="dialog" aria-labellebdy="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -129,26 +126,33 @@ if(isset($_POST['agregar'])){
                        		        
                        		        <input  id="id" name="id" type="hidden" ></input>   		
                                        <div class="form-group">
-                                       <label for="">Código: <p>*</p></label>
-                                       <input class="form-control" name="codigo" id="codigo" type="text" placeholder="Código" title="Favor rellenar este campo!" required>
+                                       <label for="codigo">Código:<p>*</p></label>
+                                       <input class="form-control" name="codigo" id="codigo" type="text" placeholder="Código de producto" title="Favor rellenar este campo!" required>
                                    </div>
                                    <div class="form-group">
-                                   <label for="">Nombre</label>
-                                   <input class="form-control" name="nombre" id="nombre" type="text" placeholder="Nombre" title="Favor rellenar este campo!" required>
+                                       <label for="nombre">Nombre: <p>*</p></label>
+                                       <input class="form-control" name="nombre" id="nombre" type="text" placeholder="Nombre" title="Favor rellenar este campo!" required>
                                    </div>
                                    <div class="form-group">
-                                       <label for="">Familia: <p>*</p></label>
-                                       <input class="form-control" name="familia" id="familia" type="password" placeholder="Familia" title="Favor rellenar este campo!" required>
+                                       <label for="familia">Familia: <p>*</p></label><br>
+                                       <div name="familia">
+                                           <input type="radio" name="fam" id="familia" value="Frutas" required>Frutas
+                                           <br>
+                                           <input type="radio" name="fam" id="familia" value="Hortalizas" required>Hortalizas
+                                       </div>
                                    </div>
                                    <div class="form-group">
-                                       <label for="">Unidad: <p>*</p></label>
-                                       <input class="form-control" name="unidad" id="unidad" type="password" placeholder="Unidad" title="Favor rellenar este campo!" required>
+                                       <label for="unidad">Unidad: <p>*</p></label><br>
+                                       <div name="Unidad">
+                                           <input type="radio" name="und" id="unidad" value="Unidad" required>Unidad
+                                           <br>
+                                           <input type="radio" name="und" id="unidad" value="Kilogramos" required>Kilogramos
+                                       </div>
                                    </div>
                                    <div class="form-group">
-                                       <label for="">Precio: <p>*</p></label>
-                                       <input class="form-control" name="precio" id="preoio" type="password" placeholder="Precio" title="Favor rellenar este campo!" required>
+                                       <label for="precio">Precio: <p>*</p></label>
+                                       <input class="form-control" id="precio" type="text" placeholder="Precio" title="Favor rellenar este campo!" required>
                                    </div>
-
 									<input type="submit" value="Editar" name="editar" class="btn btn-success">							
                        </form>
                     </div>
@@ -176,7 +180,7 @@ if ($resultado =  mysqli_query($conexion, $consulta))
      echo "<td>$fila[1]</td><td>$fila[2]</td><td>$fila[3]</td><td>$fila[4]</td><td>$fila[5]</td>";	
      echo"<td>";						
      echo "<a data-toggle='modal' data-target='#editProducto' data-id='" .$fila[0] .
-     "' data-cod='" .$fila[1] ."' data-nombre='" .$fila[2] ."' data-fam='" .$fila[3] ."' data-und='" .$fila[4] .
+     "' data-codigo='" .$fila[1] ."' data-nombre='" .$fila[2] ."' data-familia='" .$fila[3] ."' data-unidad='" .$fila[4] .
      "' data-precio='" .$fila[5] ."' class='btn btn-warning'><span class='glyphicon glyphicon-pencil'></span></a> ";			
      echo "<a class='btn btn-danger'href='elimina-producto.php?codigo=" .$fila[1] ."'><span class='glyphicon glyphicon-remove'></span></a>";		
      echo "</td>";
@@ -201,10 +205,10 @@ if ($resultado =  mysqli_query($conexion, $consulta))
 		  $('#editProducto').on('show.bs.modal', function (event) {
 		  var button = $(event.relatedTarget) 
 		  var recipient0 = button.data('id')
-		  var recipient1 = button.data('cod')
+		  var recipient1 = button.data('codigo')
 		  var recipient2 = button.data('nombre')
-          var recipient3 = button.data('fam')
-          var recipient4 = button.data('und')
+          var recipient3 = button.data('familia')
+          var recipient4 = button.data('unidad')
           var recipient5 = button.data('precio')
           
 

@@ -32,10 +32,10 @@ if ($result->num_rows > 0) {
     $_SESSION['loggedin'] = true;
     $_SESSION['username'] = $username;
 
-    if ($row['tipousuario'] == "admin"){
+    if ($row['tipousuario'] == "Administrador"){
         echo "<script> window.open('menu-principal.php','_self')</script>";
     }
-    else if ($row['tipousuario'] == "empleado"){
+    else if ($row['tipousuario'] == "Empleado"){
         echo "<script> window.open('menu-empleado.php','_self')</script>";
     }
 
