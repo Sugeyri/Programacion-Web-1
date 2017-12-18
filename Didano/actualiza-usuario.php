@@ -8,7 +8,7 @@ session_start();
 	$user = $_POST['usuario'];
     $tipousuario =  $_POST['tipousuario'];
         $pass = $_POST['clave'];
-        $sql = $mysqli->query("update usuario set usuario='$user', tipousuario=$tipousuario, pass='$pass' where id=$id");
+        $sql = $mysqli->query("UPDATE usuario SET usuario='$user', tipousuario=$tipousuario, pass='$pass' WHERE id=$id");
         
                 print '<script language="JavaScript">'; 
                 print 'alert("Registro actualizado!");'; 

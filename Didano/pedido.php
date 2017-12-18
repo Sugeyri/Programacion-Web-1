@@ -7,11 +7,44 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="img/logo.ico">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/estilos-menu.css">
     <link rel="stylesheet" href="css/menu.css">
-    <link rel="stylesheet" href="css/pedido.css">
     <title>Realizar Pedido</title>
 </head>
+    <?php
+
+$host_db = "localhost";
+$user_db = "root";
+$pass_db = "";
+$db_name = "didano";
+$tbl_name = "producto";
+
+$conexion = new mysqli($host_db, $user_db, $pass_db, $db_name);
+
+if ($conexion->connect_error) {
+ die("La conexion falló: " . $conexion->connect_error);
+}
+
+
+$carrito = $_SESSION['agregar'];
+
+if(isset($_POST['agregar'])){
+    
+$lista[]=array(
+    $codigo = $_POST['codigo'],
+    $nombre = $_POST['nombre'],
+    $cantidad = $_POST['cantidad'],
+);  
+    print_r($lista);
+
+       
+/* acá se harian las operaciones de agregar/quitar del carrito */
+/* se guardan las modificaciones en la variable de sesión */
+$_SESSION['carrito'] = $carrito;
+
+    }
+
+?>
+<body>
 <header>
         <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
             <div class="container">
@@ -27,36 +60,34 @@
                                 <div class="collapse navbar-collapse" id="navegacion-fm">
                                     <ul class="nav navbar-nav">
                                         <li><a href="pedido.php">Realizar Pedido</a></li>
-                                        <li><a href="logout.php">Iniciar Sesion</a></li>
+                                        <li><a href="iniciar-sesion.php">Iniciar Sesion</a></li>
                                     </ul>
                                 </div>
             </div>
         </nav>
     </header>
-    <br>
-<body>
-
-
+<br>
     <div class="container container-ph">
         <div class="page-header">
             <h2>Realizar Pedido</h2>
         </div>
     </div>
     <div class="container container-ped-1">
-        <form action="" class="">
+        <form action="" method="POST" class="">
             <div class="form-group">
                 <label for="codigo">Código:</label>
-                <input class="form-control" id="codigo" type="text" placeholder="Código de producto">
-            </div>
+                <a data-toggle='modal' data-target='#buscar'  class='btn btn-xs'href='#"'><span class='glyphicon glyphicon-search'></span></a>
+                <input class="form-control" name="codigo" type="text" placeholder="Código de producto">
+            </div>        
             <div class="form-group">
                 <label for="nombre">Nombre:</label>
-                <input class="form-control" id="nombre" type="text" placeholder="Nombre">
+                <input class="form-control" name="nombre" type="text" placeholder="Nombre">
             </div>
             <div class="form-group">
                 <label for="cantidad">Cantidad:</label>
-                <input class="form-control" id="cantidad" type="text" placeholder="Cantidad">
+                <input class="form-control" name="cantidad" type="text" placeholder="Cantidad">
             </div>
-            <input type="submit" id="agregar" value="Agregar" class="btn btn-xs btn-success"></input>
+            <input type="submit" name="agregar" value="Agregar" class="btn btn-xs btn-success"></input>
             <input type="submit" id="eliminar" value="Quitar" class="btn btn-xs btn-danger"></input>
         </form>
     </div>
@@ -70,7 +101,16 @@
                     <th class="text-center">Cantidad</th>
                 </thead>
                 <tbody id="pedido-tabla">
-
+                <tr>
+  <?php foreach($carrito as $codigo )
+  {
+ ?>
+    <tr>
+    <td><?php print $id; ?></td>
+    <td><?php print $cantidad; ?></td>
+    </tr>
+  <?php } ?>
+</tr>
                 </tbody>
             </table>
         </div>
@@ -123,7 +163,6 @@
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/agregar-pedido.js"></script>
 </body>
 <br><br>
 

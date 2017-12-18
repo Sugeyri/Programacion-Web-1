@@ -28,7 +28,7 @@
         <div class="collapse navbar-collapse" id="navegacion-fm">
             <ul class="nav navbar-nav">
                 <li><a href="pedido.php">Realizar Pedido</a></li>
-                <li><a href="logout.php">Iniciar Sesion</a></li>
+                <li><a href="iniciar-sesion.php">Iniciar Sesion</a></li>
             </ul>
         </div>
     </div>

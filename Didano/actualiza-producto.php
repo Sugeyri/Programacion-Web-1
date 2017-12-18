@@ -10,8 +10,8 @@ session_start();
     $fam = $_POST['fam'];
 	$und = $_POST['und'];
     $precio =  $_POST['precio'];
-        $sql = $mysqli->query("update producto set codigo='$cod', nombre=$nom, familia='$fam',
-        unidad='$und', precio=$precio where id=$id");
+        $sql = $mysqli->query("UPDATE producto SET codigo='$cod', nombre=$nom, familia='$fam',
+        unidad='$und', precio=$precio WHERE id=$id");
         
                 print '<script language="JavaScript">'; 
                 print 'alert("Registro actualizado!");'; 
