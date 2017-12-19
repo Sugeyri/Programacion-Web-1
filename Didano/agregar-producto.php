@@ -113,6 +113,7 @@ if(isset($_POST['agregar'])){
                 <input type="submit" name="agregar" value="Agregar" class="btn btn-lg btn-success"></input>
             </div>
         </form>
+        <br>
 
     <div class="modal" id="editProducto" tabindex="-1" role="dialog" aria-labellebdy="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -151,7 +152,7 @@ if(isset($_POST['agregar'])){
                                    </div>
                                    <div class="form-group">
                                        <label for="precio">Precio: <p>*</p></label>
-                                       <input class="form-control" id="precio" type="text" placeholder="Precio" title="Favor rellenar este campo!" required>
+                                       <input class="form-control" name="precio" id="precio" type="text" placeholder="Precio" title="Favor rellenar este campo!" required>
                                    </div>
 									<input type="submit" value="Editar" name="editar" class="btn btn-success">							
                        </form>
@@ -167,7 +168,7 @@ if(isset($_POST['agregar'])){
          
  <table class='table'>
  <tr>
-     <th>Código</th><th>Nombre</th><th>Familia</th><th>Unidad</th><th>Precio</th><th><span class="glyphicon glyphicon-wrench"></span></th>
+     <th>Id</th><th>Código</th><th>Nombre</th><th>Familia</th><th>Unidad</th><th>Precio</th><th><span class="glyphicon glyphicon-wrench"></span></th>
  </tr>			
 <?php
  //cargar tabla
@@ -177,10 +178,10 @@ if ($resultado =  mysqli_query($conexion, $consulta))
  while ($fila = $resultado->fetch_row()) 
  {					
      echo "<tr>";
-     echo "<td>$fila[1]</td><td>$fila[2]</td><td>$fila[3]</td><td>$fila[4]</td><td>$fila[5]</td>";	
+     echo "<td>$fila[0]</td><td>$fila[1]</td><td>$fila[2]</td><td>$fila[3]</td><td>$fila[4]</td><td>$fila[5]</td>";	
      echo"<td>";						
-     echo "<a data-toggle='modal' data-target='#editProducto' data-id='" .$fila[0] .
-     "' data-codigo='" .$fila[1] ."' data-nombre='" .$fila[2] ."' data-familia='" .$fila[3] ."' data-unidad='" .$fila[4] .
+     echo "<a data-toggle='modal' data-target='#editProducto' data-id='" .$fila[0]."' data-codigo='" .$fila[1] .
+     "' data-nombre='" .$fila[2] ."' data-familia='" .$fila[3] ."' data-unidad='" .$fila[4] .
      "' data-precio='" .$fila[5] ."' class='btn btn-warning'><span class='glyphicon glyphicon-pencil'></span></a> ";			
      echo "<a class='btn btn-danger'href='elimina-producto.php?codigo=" .$fila[1] ."'><span class='glyphicon glyphicon-remove'></span></a>";		
      echo "</td>";
@@ -200,7 +201,6 @@ if ($resultado =  mysqli_query($conexion, $consulta))
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/agregar-producto.js"></script>
     <script>			 
 		  $('#editProducto').on('show.bs.modal', function (event) {
 		  var button = $(event.relatedTarget) 

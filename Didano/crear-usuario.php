@@ -130,7 +130,7 @@ if(isset($_POST['guardar'])){
                                    <div class="form-group">
                                    <label for="tipousuario">Tipo de Usuario</label>
                                    <select class="form-control" name="tipousuario" id="tipousuario">
-                                   <option value="" selected disabled>Seleccione una opcion</option>
+                                   <option value="" >Seleccione una opcion</option>
                                      <option value="admin">Administrador</option>
                                      <option value="empleado">Empleado</option>
                                    </select>
@@ -139,11 +139,6 @@ if(isset($_POST['guardar'])){
                                        <label for="clave">Contraseña: <p>*</p></label>
                                        <input class="form-control" name="clave" id="clave" type="password" placeholder="Clave" title="Favor rellenar este campo!" required>
                                    </div>
-                                   <div class="form-group">
-                                       <label for="nclave">Confirmar contraseña: <p>*</p></label>
-                                       <input class="form-control" name="nclave" id="nclave" type="password" placeholder="Confirmar clave" title="Favor rellenar este campo!" required>
-                                   </div>
-
 									<input type="submit" value="Editar" name="editar" class="btn btn-success">							
                        </form>
                     </div>
@@ -156,7 +151,7 @@ if(isset($_POST['guardar'])){
       
  <table class='table'>
  <tr>
-     <th>Usuario</th><th>Tipo Usuario</th><th><span class="glyphicon glyphicon-wrench"></span></th>
+     <th>Id</th><th>Usuario</th><th>Tipo Usuario</th><th><span class="glyphicon glyphicon-wrench"></span></th>
  </tr>			
 <?php
  //cargar tabla
@@ -166,9 +161,9 @@ if ($resultado =  mysqli_query($conexion, $consulta))
  while ($fila = $resultado->fetch_row()) 
  {					
      echo "<tr>";
-     echo "<td>$fila[1]</td><td>$fila[2]</td>";	
+     echo "<td>$fila[0]</td><td>$fila[1]</td><td>$fila[2]</td>";	
      echo"<td>";						
-     echo "<a data-toggle='modal' data-target='#editUsu' data-id='" .$fila[0] ."' data-user='" .$fila[1] ."' data-tipo='" .$fila[2] ."' data-pass='" .$fila[3] ."' class='btn btn-warning'><span class='glyphicon glyphicon-pencil'></span></a> ";			
+     echo "<a data-toggle='modal' data-target='#editUsu' data-id='" .$fila[0] ."' data-usuario='" .$fila[1] ."' data-tipousuario='" .$fila[2] ."' data-clave='" .$fila[3] ."' class='btn btn-warning'><span class='glyphicon glyphicon-pencil'></span></a> ";			
      echo "<a class='btn btn-danger'href='elimina-usuario.php?usuario=" .$fila[1] ."'><span class='glyphicon glyphicon-remove'></span></a>";		
      echo "</td>";
      echo "</tr>";
@@ -190,15 +185,12 @@ if ($resultado =  mysqli_query($conexion, $consulta))
     <script src="js/bootstrap.min.js"></script>
     <script>			 
 		  $('#editUsu').on('show.bs.modal', function (event) {
-		  var button = $(event.relatedTarget) // Button that triggered the modal
+		  var button = $(event.relatedTarget) 
 		  var recipient0 = button.data('id')
-		  var recipient1 = button.data('user')
-		  var recipient2 = button.data('tipo')
-		  var recipient3 = button.data('pass')
-		   // Extract info from data-* attributes
-		  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-		  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-		 
+		  var recipient1 = button.data('usuario')
+		  var recipient2 = button.data('tipousuario')
+          var recipient3 = button.data('clave')
+          
 		  var modal = $(this)		 
 		  modal.find('.modal-body #id').val(recipient0)
 		  modal.find('.modal-body #usuario').val(recipient1)

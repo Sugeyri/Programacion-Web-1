@@ -12,7 +12,7 @@ session_start();
     $direccion = $_POST['direccion'];
     $telefono = $_POST['telefono'];
         $sql = $mysqli->query("UPDATE cliente SET codigo='$codigo', nombre=$nombre, ruta='$ruta, 
-        'responsable='$responsable', direccion=$direccion, telefono='$telefono' WHERE codigo=$codigo");
+        'responsable='$responsable', direccion=$direccion, telefono='$telefono' WHERE id=$id");
         
                 print '<script language="JavaScript">'; 
                 print 'alert("Registro actualizado!");'; 

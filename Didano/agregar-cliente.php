@@ -166,7 +166,7 @@ if(isset($_POST['agregar'])){
     <br>
     <table class='table'>
     <tr>
-        <th>Código</th><th>Nombre</th><th>Ruta</th><th>Responsable</th><th>Dirección</th><th>Teléfono</th><th><span class="glyphicon glyphicon-wrench"></span></th>
+        <th>Id</th><th>Código</th><th>Nombre</th><th>Ruta</th><th>Responsable</th><th>Dirección</th><th>Teléfono</th><th><span class="glyphicon glyphicon-wrench"></span></th>
     </tr>			
    <?php
     //cargar tabla
@@ -176,7 +176,7 @@ if(isset($_POST['agregar'])){
     while ($fila = $resultado->fetch_row()) 
     {					
         echo "<tr>";
-        echo "<td>$fila[1]</td><td>$fila[2]</td><td>$fila[3]</td><td>$fila[4]</td><td>$fila[5]</td><td>$fila[6]</td>";	
+        echo "<td>$fila[0]</td><td>$fila[1]</td><td>$fila[2]</td><td>$fila[3]</td><td>$fila[4]</td><td>$fila[5]</td><td>$fila[6]</td>";	
         echo"<td>";						
         echo "<a data-toggle='modal' data-target='#editCli' data-id='" .$fila[0] ."' data-codigo='" .$fila[1] ."' data-nombre='" .$fila[2] ."' data-ruta='" .$fila[3] ."' data-responsable='" .$fila[4] ."' data-direccion='" .$fila[5] ."' data-telefono='" .$fila[6] ."' class='btn btn-warning'><span class='glyphicon glyphicon-pencil'></span></a> ";			
         echo "<a class='btn btn-danger'href='elimina-cliente.php?codigo=" .$fila[1] ."'><span class='glyphicon glyphicon-remove'></span></a>";		
@@ -194,9 +194,9 @@ if(isset($_POST['agregar'])){
    ?>
    
    </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/agregar-cliente.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+   <script src="js/bootstrap.min.js"></script>
+
     <script>			 
 		  $('#editCli').on('show.bs.modal', function (event) {
 		  var recipient0 = button.data('id')

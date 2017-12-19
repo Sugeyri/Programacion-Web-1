@@ -4,7 +4,7 @@ session_start();
 
 	$mysqli = new mysqli("localhost", "root", "", "didano");	
 	
-	$id = $_GET['id'];
+	$id = $_POST['id'];
 	$user = $_POST['usuario'];
     $tipousuario =  $_POST['tipousuario'];
         $pass = $_POST['clave'];
