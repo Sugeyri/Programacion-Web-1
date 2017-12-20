@@ -64,23 +64,12 @@ if ($conexion->connect_error) {
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane active" id="tab-ped-pendientes">
                                 <div class="container container-tabla">
-                                    
-                                     <div class="row">
-
-                                        <div class='col-sm-2'>
-                                            <div class="form-group">
-                                                <div class='input-group date' id='datetimepicker2'>
-                                                  
-                                                </div>
-                                            </div>
-                                    </div>
-                              </div>
-
+                                    <br>                          
                                     <div class="table-responsive">
                                         <table class="table table-hover ">
                                             <tr class="info">
                                             <tr>
-        <th>Id</th><th>Producto</th><th>Cantidad</th><th>Subtotal</th><th>Cliente</th><th>Total</th><th>Estado</th>
+        <th>Id</th><th>Producto</th><th>Cantidad</th><th>Subtotal</th><th>Cliente</th><th>Total</th><th>Fecha de Pedido</th><th>Fecha Entrega</th><th>Estado</th><th>Entregar</th>
     </tr>			
    <?php
     //cargar tabla
@@ -90,7 +79,7 @@ if ($conexion->connect_error) {
     while ($fila = $resultado->fetch_row()) 
     {					
         echo "<tr>";
-        echo "<td>$fila[0]</td><td>$fila[1]</td><td>$fila[2]</td><td>$fila[3]</td><td>$fila[4]</td><td>$fila[5]</td><td>$fila[6]</td>";	
+        echo "<td>$fila[0]</td><td>$fila[1]</td><td>$fila[2]</td><td>$fila[3]</td><td>$fila[4]</td><td>$fila[5]</td><td>$fila[6]</td><td>$fila[7]</td><td>$fila[8]</td>";	
         echo"<td>";						
         echo "<a class='btn btn-success'href='entrega.php?id=" .$fila[0] ."'><span class='glyphicon glyphicon-check'></span></a>";		
         echo "</td>";
@@ -112,7 +101,7 @@ if ($conexion->connect_error) {
                                     <table class="table table-hover ">
                                     <tr class="info">
                                     <tr>
-<th>Id</th><th>Producto</th><th>Cantidad</th><th>Subtotal</th><th>Cliente</th><th>Total</th><th>Estado</th>
+                                    <th>Id</th><th>Producto</th><th>Cantidad</th><th>Subtotal</th><th>Cliente</th><th>Total</th><th>Fecha de Pedido</th><th>Fecha Entrega</th><th>Estado</th>
 </tr>			
 <?php
 //cargar tabla
@@ -122,7 +111,7 @@ if ($resultado =  mysqli_query($conexion, $consulta))
 while ($fila = $resultado->fetch_row()) 
 {					
 echo "<tr>";
-echo "<td>$fila[0]</td><td>$fila[1]</td><td>$fila[2]</td><td>$fila[3]</td><td>$fila[4]</td><td>$fila[5]</td><td>$fila[6]</td>";	
+echo "<td>$fila[0]</td><td>$fila[1]</td><td>$fila[2]</td><td>$fila[3]</td><td>$fila[4]</td><td>$fila[5]</td><td>$fila[6]</td><td>$fila[7]</td><td>$fila[8]</td>";	
 echo"<td>";						
 echo "</td>";
 echo "</tr>";

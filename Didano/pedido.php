@@ -23,26 +23,6 @@ $conexion = new mysqli($host_db, $user_db, $pass_db, $db_name);
 if ($conexion->connect_error) {
  die("La conexion falló: " . $conexion->connect_error);
 }
-
-
-$carrito = $_SESSION['agregar'];
-
-if(isset($_POST['agregar'])){
-    
-$lista[]=array(
-    $codigo = $_POST['codigo'],
-    $nombre = $_POST['nombre'],
-    $cantidad = $_POST['cantidad'],
-);  
-    print_r($lista);
-
-       
-/* acá se harian las operaciones de agregar/quitar del carrito */
-/* se guardan las modificaciones en la variable de sesión */
-$_SESSION['carrito'] = $carrito;
-
-    }
-
 ?>
 <body>
 <header>
@@ -60,7 +40,7 @@ $_SESSION['carrito'] = $carrito;
                                 <div class="collapse navbar-collapse" id="navegacion-fm">
                                     <ul class="nav navbar-nav">
                                         <li><a href="pedido.php">Realizar Pedido</a></li>
-                                        <li><a href="iniciar-sesion.php">Iniciar Sesion</a></li>
+                                        <li><a href="Inicio.php">Iniciar Sesion</a></li>
                                     </ul>
                                 </div>
             </div>
@@ -76,91 +56,103 @@ $_SESSION['carrito'] = $carrito;
         <form action="" method="POST" class="">
             <div class="form-group">
                 <label for="codigo">Código:</label>
+                
                 <a data-toggle='modal' data-target='#buscar'  class='btn btn-xs'href='#"'><span class='glyphicon glyphicon-search'></span></a>
                 <input class="form-control" name="codigo" type="text" placeholder="Código de producto">
-            </div>        
-            <div class="form-group">
-                <label for="nombre">Nombre:</label>
-                <input class="form-control" name="nombre" type="text" placeholder="Nombre">
-            </div>
+            </div>  
             <div class="form-group">
                 <label for="cantidad">Cantidad:</label>
-                <input class="form-control" name="cantidad" type="text" placeholder="Cantidad">
+                <input class="form-control" name="cantidad" type="text" placeholder="Cantidad"  onkeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
             </div>
-            <input type="submit" name="agregar" value="Agregar" class="btn btn-xs btn-success"></input>
-            <input type="submit" id="eliminar" value="Quitar" class="btn btn-xs btn-danger"></input>
-        </form>
-    </div>
-    <br>
-    <div class="container container-tabla">
-        <div class="table-responsive">
-            <table class="table text-center ">
-                <thead>
-                    <th class="text-center">Código</th>
-                    <th class="text-center">Nombre</th>
-                    <th class="text-center">Cantidad</th>
-                </thead>
-                <tbody id="pedido-tabla">
-                <tr>
-  <?php foreach($carrito as $codigo )
-  {
- ?>
-    <tr>
-    <td><?php print $id; ?></td>
-    <td><?php print $cantidad; ?></td>
-    </tr>
-  <?php } ?>
-</tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <div class="container container-ped-2">
-        <br>
-        <form action="" class="">
             <div class="form-group">
                 <label for="fecha">Fecha Entrega:</label>
-                <input class="form-control" id="fecha" type="text" placeholder="dd/mm/aaaa">
+                <input class="form-control" name="fecha" type="date" placeholder="dd/mm/aaaa">
             </div>
             <div class="form-group">
                 <label for="cod-cliente">Código Cliente:</label>
-                <input class="form-control" id="cod-cliente" type="text" placeholder="Código Cliente">
+                <input class="form-control" name="cod-cliente" type="text" placeholder="Código Cliente">
             </div>
+            
             <div class="form-group">
-                <label for="responsable">Responsable:</label>
-                <input class="form-control" id="responsable" type="text" placeholder="Responsable">
-            </div>
-            <div class="form-group">
-                <label for="total">Total:</label>
-                <input class="form-control" id="total" type="text" placeholder="Total">
-            </div>
-            <div class="form-group">
-                <label for="notas">Notas:</label>
-                <input class="form-control" id="notas" type="text" placeholder="Escriba sus notas">
-            </div>
+            <input type="submit" name="guardar" value="Enviar" class="btn btn-lg btn-primary"></input>
+        </div>
+        </form>
+    </div>
+    <br>
 
-            <div class="container container-v1">
-                <a href="#ventana2" id="enviar" class="btn btn-lg btn-primary" data-toggle="modal">Enviar</a>
+    <div class="modal" id="buscar" tabindex="-1" role="dialog" aria-labellebdy="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4>Buscador de Productos</h4>
+                    </div>
+                    <div class="modal-body">                      
+                                   <table class='table'>
+                                        <tr>
+                                            <th>Código</th><th>Nombre</th>
+                                        </tr> 
+                                        <?php
+                                            $sql = "SELECT * FROM producto ";
+                                            
+                                            if ($resultado = $conexion->query($sql)) 
+                                            {
+                                                while ($fila = $resultado->fetch_row()) 
+                                                {					
+                                                    echo "<tr>";
+                                                    echo "<td>$fila[1]</td><td>$fila[2]</td>";	
+                                                    echo "</tr>";
+                                                }
+                                                $resultado->close();
+                                            }else{
+                                                print '<script language="JavaScript">'; 
+                                                print 'alert("No hay resultados de la busqueda!");'; 
+                                                print '</script>'; 
+                                            }
+                                            mysqli_close($conexion);
+                                        ?>
+                                        </table>
 
-                <div class="modal fade" id="ventana2">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                <h4 class="modal-title">¿Desea enviar el pedido?</h4>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
-                            </div>
-                        </div>
+                                    </div>							
+                       </form>
                     </div>
                 </div>
             </div>
+        </div> 
 
-        </form>
-    </div>
+            
+<?php
+if(isset($_POST['guardar'])){
+    $cod = $_POST['codigo'];
+    $cant = $_POST['cantidad'];
+    $sql = "SELECT precio FROM producto WHERE codigo= $cod ";
+    
+    $consulta = mysqli_query($conexion, $sql);
+        while ($fila = $consulta->fetch_row()) 
+        {	
+            $precio = $fila[0];
+            $subtotal = $cant * $precio;
+        }   
+    
+    $subt = $subtotal;
+    $cliente = $_POST['cod-cliente'];
+    $total += $subtotal;
+    $fecha = localtime();
+    $fechaentrega = $_POST['fecha'];
+    $estado= 'Pendiente';
+
+
+        $insert = "INSERT INTO pedido (producto, cantidad, subtotal, cliente, total, fecha, fechaentrega, estado)
+         VALUES  ('$pro','$can','$subt', '$cliente','$total','$fecha','$fechaentrega','$estado')";
+        echo $insert;
+        $ejecutar = mysqli_query($conexion, $insert);
+
+             if($ejecutar){print '<script language="JavaScript">'; 
+                print 'alert("Pedido Realizado");'; 
+                print '</script>'; 
+            }    
+        }
+?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 </body>

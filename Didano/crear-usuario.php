@@ -131,15 +131,15 @@ if(isset($_POST['guardar'])){
                                    <label for="tipousuario">Tipo de Usuario</label>
                                    <select class="form-control" name="tipousuario" id="tipousuario">
                                    <option value="" >Seleccione una opcion</option>
-                                     <option value="admin">Administrador</option>
-                                     <option value="empleado">Empleado</option>
+                                     <option value="Administrador">Administrador</option>
+                                     <option value="Empleado">Empleado</option>
                                    </select>
                                  </div>
                                    <div class="form-group">
                                        <label for="clave">Contraseña: <p>*</p></label>
                                        <input class="form-control" name="clave" id="clave" type="password" placeholder="Clave" title="Favor rellenar este campo!" required>
                                    </div>
-									<input type="submit" value="Editar" name="editar" class="btn btn-success">							
+									<input type="submit" value="Editar" class="btn btn-success">							
                        </form>
                     </div>
                     <div class="modal-footer">
@@ -148,6 +148,7 @@ if(isset($_POST['guardar'])){
                 </div>
             </div>
         </div> 
+        
       
  <table class='table'>
  <tr>
